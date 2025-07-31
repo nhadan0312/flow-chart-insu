@@ -1,0 +1,99 @@
+graph TD
+ 
+    %% === Entry Point ===
+        START[🎁 Initial Offer: Free 30M VND<br/>What would you like to do?] --> JOURNEY{🧭 Select a Journey}
+ 
+    %% === Journey Layer ===
+        JOURNEY --> J1[Journey 1: Don't Care]
+        JOURNEY --> J2[Journey 2: Free Plan]
+        JOURNEY --> J3[Journey 3: Upgrade DTL]
+        JOURNEY --> J4[Journey 4: Explore Riders]
+        JOURNEY --> J5[Journey 5: Learn More]
+ 
+    subgraph JOURNEY_LAYER[ ]
+        direction LR
+        J1
+        J2
+        J3
+        J4
+        J5
+    end
+ 
+    %% === Journey 1 - Exit ===
+        J1 --> THANKS[Do you really want to give up the chance to protect your family for up to 30 million? 💸👨‍👩‍👧‍👦💔]
+        THANKS --> END_JOURNEY1[Conversation Ends]
+ 
+    %% === Journey 2 - Free Plan ===
+        J2 --> VIEW_FREE_PLAN[View Free Plan Details]
+ 
+    %% === Journey 3 - Upgrade DTL ===
+        J3 --> CHOOSE_UPGRADE_OPTIONS[Start Free + Upgrade DTL Options]
+        CHOOSE_UPGRADE_OPTIONS --> SELECT_COVERAGE_AMOUNT[Select Upgrade Amount<br/>100M to more than 1B]
+        SELECT_COVERAGE_AMOUNT -->|Less than or equal to 1B| UW 
+        SELECT_COVERAGE_AMOUNT -->|More than 1B| HIGH_VALUE_LEAD[Assign Specialist Agent<br/>Timo/Chubb]
+ 
+        %% Agent Support Flow (keep T+3~7 biz days)
+        HIGH_VALUE_LEAD --> AGENT_CONTACTS[Agent Contacts You in 2-4 Hours]
+        AGENT_CONTACTS --> AGENT_CONSULTATION[Consultation: Needs & Proposal]
+        AGENT_CONSULTATION --> AGENT_PROPOSAL[Custom Quote Provided]
+        AGENT_PROPOSAL --> DECISION_FROM_CLIENT[Your Decision<br/>❶ Accept<br/>❷ Modify<br/>❸ Later]
+     
+        DECISION_FROM_CLIENT -->|❶| AGENT_FINAL_SUBMISSION[Submitted to Chubb<br/>T+3 to 7 business days]
+        DECISION_FROM_CLIENT -->|❷| AGENT_CONSULTATION
+        DECISION_FROM_CLIENT -->|❸| AGENT_FOLLOWUP[Agent Follows Up in 3 Days]
+        AGENT_FOLLOWUP --> AGENT_CONSULTATION
+     
+        AGENT_FINAL_SUBMISSION --> ACTIVE
+ 
+    %% === Journey 4 - Explore Riders ===
+        J4 --> SELECT_RIDERS[Choose Riders<br/>❶ Critical Illness<br/>❷ Hospital Cash<br/>❸ Personal Accident<br/>❹ Bundle All]
+        SELECT_RIDERS -->|❶| RIDER_CRITICAL[Add Critical Illness<br/>Plus 15K VND/month]
+        SELECT_RIDERS -->|❷| RIDER_HOSPITAL[Add Hospital Cash<br/>Plus 8K VND/month]
+        SELECT_RIDERS -->|❸| RIDER_ACCIDENT[Add Personal Accident<br/>Plus 12K VND/month]
+        SELECT_RIDERS -->|❹| RIDER_BUNDLE[Add All Riders Bundle<br/>Total 30K VND/month]
+        RIDER_CRITICAL --> RIDER_CART
+        RIDER_HOSPITAL --> RIDER_CART
+        RIDER_ACCIDENT --> RIDER_CART
+        RIDER_BUNDLE --> RIDER_CART
+        RIDER_CART[Rider Cart<br/>❶ Add More<br/>❷ Choose Base Plan] -->|❶| SELECT_RIDERS
+        RIDER_CART -->|❷| CHOOSE_BASE_FOR_RIDER[Choose Base Plan<br/>❶ Keep Free Plan<br/>❷ Upgrade Base]
+        CHOOSE_BASE_FOR_RIDER -->|❶| VIEW_FREE_PLAN
+        CHOOSE_BASE_FOR_RIDER -->|❷| SELECT_COVERAGE_AMOUNT
+ 
+    %% === Journey 2/3/4 - Flow to Core ===
+        VIEW_FREE_PLAN --> UW[🔍 Underwriting]
+ 
+    %% === Underwriting Flow (shared) ===
+        UW --> EXCLUSION[⚠️ Exclusion<br/>I accept all]
+        EXCLUSION --> PAY[💳 Pay]
+        PAY --> SUBMIT[📤 Submit to Chubb<br/>Awaiting T+1]
+        SUBMIT --> ACTIVE[🛡️ Protected Active]
+ 
+    %% === Journey 5 - Learn More ===
+        J5 --> INFO_MENU[📚 Choose Info Topic<br/>❶ Contract<br/>❷ Beneficiaries<br/>❸ Payment<br/>❹ Claims<br/>❺ FAQ]
+        INFO_MENU -->|❶| INFO_CONTRACT[Policy Contract Info]
+        INFO_MENU -->|❷| INFO_BENEFICIARY[Beneficiary Info]
+        INFO_MENU -->|❸| INFO_PAYMENT[Payment Methods]
+        INFO_MENU -->|❹| INFO_CLAIMS[Claims Process]
+        INFO_MENU -->|❺| INFO_FAQ[Frequently Asked Questions]
+        INFO_CONTRACT --> INFO_MENU
+        INFO_BENEFICIARY --> INFO_MENU
+        INFO_PAYMENT --> INFO_MENU
+        INFO_CLAIMS --> INFO_MENU
+        INFO_FAQ --> INFO_MENU
+        INFO_MENU --> RETURN_TO_JOURNEY[Ready to Proceed?<br/>Back to Journey Selection]
+        RETURN_TO_JOURNEY --> JOURNEY
+ 
+    %% === Styling (safe class names) ===
+        classDef journeyNode fill:#3498db,color:#fff
+        classDef coreStep fill:#2c3e50,color:#fff
+        classDef infoBox fill:#16a085,color:#fff
+        classDef endNode fill:#2ecc71,color:#fff
+     
+        class J1,J2,J3,J4,J5 journeyNode
+        class UW,EXCLUSION,PAY,SUBMIT coreStep
+        class HIGH_VALUE_LEAD,AGENT_CONTACTS,AGENT_CONSULTATION,AGENT_PROPOSAL,DECISION_FROM_CLIENT,AGENT_FINAL_SUBMISSION,AGENT_CONSULTATION,AGENT_FOLLOWUP coreStep
+        class THANKS,CHOOSE_UPGRADE_OPTIONS,SELECT_RIDERS,INFO_MENU infoBox
+        class RETURN_TO_JOURNEY,ACTIVE,END_JOURNEY1 endNode
+     
+     
