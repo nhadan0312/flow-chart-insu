@@ -21,7 +21,10 @@ graph TD
  
     %% === Journey 1 - Exit ===
         J1 --> THANKS[Do you really want to give up the chance to protect your family for up to 30 million? 💸👨‍👩‍👧‍👦💔]
-        THANKS --> END_JOURNEY1[Conversation Ends]
+        THANKS -->|❶| GIVE_UP[Yes] 
+        THANKS -->|❷| RECONSIDER[Let me try THIS 30 MILLION! 💪💰]
+        RECONSIDER --> VIEW_FREE_PLAN
+        GIVE_UP --> END_JOURNEY1[Conversation Ends]
  
     %% === Journey 2 - Free Plan ===
         J2 --> VIEW_FREE_PLAN[View Free Plan Details]
@@ -70,17 +73,15 @@ graph TD
         SUBMIT --> ACTIVE[🛡️ Protected Active]
  
     %% === Journey 5 - Learn More ===
-        J5 --> INFO_MENU[📚 Choose Info Topic<br/>❶ Contract<br/>❷ Beneficiaries<br/>❸ Payment<br/>❹ Claims<br/>❺ FAQ]
+        J5 --> INFO_MENU[📚 Choose Info Topic<br/>❶ Contract<br/>❷ Beneficiaries<br/>❸ Payment<br/>❹ Claims]
         INFO_MENU -->|❶| INFO_CONTRACT[Policy Contract Info]
         INFO_MENU -->|❷| INFO_BENEFICIARY[Beneficiary Info]
         INFO_MENU -->|❸| INFO_PAYMENT[Payment Methods]
         INFO_MENU -->|❹| INFO_CLAIMS[Claims Process]
-        INFO_MENU -->|❺| INFO_FAQ[Frequently Asked Questions]
         INFO_CONTRACT --> INFO_MENU
         INFO_BENEFICIARY --> INFO_MENU
         INFO_PAYMENT --> INFO_MENU
         INFO_CLAIMS --> INFO_MENU
-        INFO_FAQ --> INFO_MENU
         INFO_MENU --> RETURN_TO_JOURNEY[Ready to Proceed?<br/>Back to Journey Selection]
         RETURN_TO_JOURNEY --> JOURNEY
  
@@ -95,5 +96,6 @@ graph TD
         class HIGH_VALUE_LEAD,AGENT_CONTACTS,AGENT_CONSULTATION,AGENT_PROPOSAL,DECISION_FROM_CLIENT,AGENT_FINAL_SUBMISSION,AGENT_CONSULTATION,AGENT_FOLLOWUP coreStep
         class THANKS,CHOOSE_UPGRADE_OPTIONS,SELECT_RIDERS,INFO_MENU infoBox
         class RETURN_TO_JOURNEY,ACTIVE,END_JOURNEY1 endNode
-     
+    %% === Highlight red arrow from follow-up to consultation ===
+    linkStyle 9,21,23,34,53 stroke:#e74c3c,stroke-width:2px     
      
