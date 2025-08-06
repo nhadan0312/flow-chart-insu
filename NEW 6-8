@@ -1,0 +1,197 @@
+flowchart TD
+
+%% ------------------------ ENTRY POINT ------------------------
+    A["Insurance: 30M VND free for 3 months<br/>What's your main concern?"]
+    B["What does this protect?"]
+    C["Why free?"]
+    A --> B
+    A --> C
+
+%% ------------------------ B PATH ------------------------
+    B --> B_INFO[" Covers death due to illness or accident.<br/>Payout goes to your loved ones.<br/><br/>Want to explore how this works?"]
+
+    B_INFO --> LEARN_BASICS["📖 How insurance works"]
+    B_INFO --> LEARN_PROCESS["⚙️ Application process"]
+    B_INFO --> LEARN_CLAIMS["💰 How beneficiaries get paid"]
+    B_INFO --> LEARN_RIDERS["🎯 Additional protections"]
+
+%% ------------------------ LEARNING NODES ------------------------
+    LEARN_BASICS --> BASICS_EDU["📚 Insurance replaces income when you can't.<br/>Younger = cheaper protection.<br/><br/>How does this fit your life?"]
+    LEARN_PROCESS --> PROCESS_EDU["📚 10 minutes online, instant approval.<br/>No medical exams for small amounts.<br/><br/>What's holding you back?"]
+    LEARN_CLAIMS --> CLAIMS_EDU["📚 Call with death certificate.<br/>Money paid 48-72 hours, tax-free.<br/><br/>Change your view of our 30M offer?"]
+    LEARN_RIDERS --> RIDERS_EDU["📚 Can add: disability, critical illness,<br/>accidental death, spouse coverage.<br/><br/>Which makes sense for you?"]
+
+%% ------------------------ THINK NODE ------------------------
+    BASICS_EDU --> THINK["Now that you understand this digital term life insurance,<br/>take a moment to think a little bit about...<br/>If something happened to you tomorrow,<br/>your family still has bills to pay.<br/>Who depends on your income?"]
+    PROCESS_EDU --> THINK
+    CLAIMS_EDU --> THINK
+    RIDERS_EDU --> THINK
+
+    THINK --> D1["Spouse and kids"]
+    THINK --> D2["My parents"]
+    THINK --> D3["Just myself"]
+
+    D1 --> FAM["If your income stopped for 3 months,<br/>could your family keep their lifestyle?"]
+    D2 --> PAR["Without your income,<br/>who covers your parents' needs?"]
+    D3 --> SELF["Even alone, you have debts, expenses.<br/>Insurance is cheaper when young.<br/>Why not lock in rates now?"]
+
+%% ------------------------ C PATH (Why free) ------------------------
+    C --> H["30M covers maybe 6 months expenses.<br/>We give you a taste of being protected<br/>so you understand the value.<br/>What's your reaction?"]
+    C --> SKEPTICAL["Sounds too good to be true.<br/>What's the catch?"]
+
+%% ------------------------ TRUST PATH ------------------------
+    SKEPTICAL --> TRUST["TRANSPARENCY: Here's our actual business model.<br/>We make money when people upgrade after<br/>experiencing protection. 85% do upgrade because<br/>30M isn't enough for real families.<br/>No tricks, no hidden fees, no auto-renewal.<br/>We bet you'll WANT more coverage after 3 months.<br/>Fair enough?"]
+
+    TRUST --> T1["I appreciate the honesty"]
+    TRUST --> T2["Still sounds like a sales trick"]
+    TRUST --> T3["Prove it - show me the fine print"]
+
+    T1 --> T1_EDU["CREDIBILITY BUILD: We could easily charge upfront<br/>like other insurers. Instead, we prove value first.<br/>If 30M feels right after 3 months, keep it free forever.<br/>If you want more (most do), we've earned your business.<br/>This approach costs us more but builds better relationships.<br/>Does this make business sense to you?"]
+
+    T2 --> T2_EDU["SKEPTIC RESPECT: You're smart to be suspicious.<br/>Vietnamese insurance has too many bad actors.<br/>Here's what's different: We put our money first.<br/>3 months free coverage, real policy, real claims paid.<br/>If we don't deliver, you lose nothing.<br/>We lose money on every non-convert.<br/>What would convince someone like you?"]
+
+    T3 --> T3_EDU["PROOF FIRST: Here's the contract - no hidden clauses.<br/>Day 91: your choice to continue or stop, zero pressure.<br/>No automatic renewal, no surprise charges.<br/>Legal document says exactly what we promised.<br/>We've paid 99.4% of claims, including free policies.<br/>Want to see sample policy documents?"]
+
+%% ------------------------ POST-EDU BRANCHES ------------------------
+    T1_EDU --> T1A["This makes business sense"]
+    T1_EDU --> T1B["I need to think about coverage amount"]
+    T1_EDU --> T1C["Show me what most people choose"]
+
+    T2_EDU --> T2A["OK, I'll test your claim"]
+    T2_EDU --> T2B["What happens if I don't convert?"]
+    T2_EDU --> T2C["How do I know you'll honor this?"]
+
+    T3_EDU --> T3A["Documents look legitimate"]
+    T3_EDU --> T3B["I want to verify your claim stats"]
+    T3_EDU --> T3C["Let me read everything first"]
+
+%% ------------------------ FAMILY PATH ------------------------
+    FAM --> FAM1["No, they'd struggle"]
+    FAM --> FAM2["They'd be okay briefly"]
+    FAM --> FAM3["How do I calculate this?"]
+
+    PAR --> PAR1["Never calculated their costs"]
+    PAR --> PAR2["I think it's covered"]
+    PAR --> PAR3["Show me the calculation"]
+
+    SELF --> SELF1["Good point about rates"]
+    SELF --> SELF2["My situation will change"]
+    SELF --> SELF3["Tell me more"]
+
+%% ------------------------ H PATH (Value Education) ------------------------
+    H --> H1["Never thought about my family"]
+    H --> H2["I have savings"]
+    H --> H3["Want to know my real needs"]
+    H --> H4["Not interested"]
+
+    H1 --> EDU1["Most people avoid thinking about this.<br/>Peace of mind means your family<br/>won't struggle financially.<br/>Want to feel protected?"]
+    H2 --> EDU2["Savings are for emergencies.<br/>Death is permanent income loss.<br/>Do you have 200-400M saved<br/>to replace 10-20 years income?"]
+    H3 --> EDU3["Smart thinking. You need 10-20x<br/>annual income for full protection.<br/>What's your monthly income?"]
+    H4 --> BUCKET1["Bucket 1: Don't Care<br/>CHECKOUT: Decline"]
+
+    EDU1 --> EDU1A["Yes, I want peace of mind"]
+    EDU1 --> EDU1B["How do I think about this?"]
+    EDU2 --> EDU2A["You're right, I don't have that"]
+    EDU2 --> EDU2B["What's the difference?"]
+    EDU3 --> EDU3A["Let's calculate my needs"]
+
+%% ------------------------ BUCKET ENTRIES ------------------------
+    %% From EDU/family
+    
+
+
+    %% From EDU/family
+    FAM1 --> BUCKET3A["Bucket 3: Free + Upgrade<br/>CHECKOUT: 30M + Family coverage"]
+    PAR1 --> BUCKET3B["Bucket 3: Free + Upgrade<br/>CHECKOUT: 30M + Parent support"]
+    SELF1 --> BUCKET3C["Bucket 3: Free + Upgrade<br/>CHECKOUT: 30M + Future rates"]
+    EDU1A --> BUCKET4A["Bucket 4: Explore Riders<br/>CHECKOUT: 30M + Full protection"]
+    EDU2A --> BUCKET3D["Bucket 3: Free + Upgrade<br/>CHECKOUT: 30M + Bridge coverage"]
+    EDU3A --> BUCKET3E["Bucket 3: Free + Upgrade<br/>CHECKOUT: 30M + Custom amount"]
+
+    %% From Thinkers
+    FAM2 --> LEARN1["How long exactly?"]
+    PAR2 --> LEARN2["Are you sure?"]
+    SELF2 --> LEARN3["When might it change?"]
+
+    LEARN1 --> L1A["6-12 months"]
+    LEARN1 --> L1B["Few years"]
+    LEARN2 --> L2A["Yes, calculated"]
+    LEARN2 --> L2B["Not 100% sure"]
+    LEARN3 --> L3A["Marriage soon"]
+    LEARN3 --> L3B["Planning kids"]
+    LEARN3 --> L3C["Parents aging"]
+
+    L1A --> BUCKET3F["Bucket 3: Free + Upgrade<br/>CHECKOUT: 30M + Extended coverage"]
+    L1B --> BUCKET2A["Bucket 2: Basic Free<br/>CHECKOUT: 30M only"]
+    L2A --> BUCKET2B["Bucket 2: Basic Free<br/>CHECKOUT: 30M only"]
+    L2B --> BUCKET3G["Bucket 3: Free + Upgrade<br/>CHECKOUT: 30M + Safety margin"]
+    L3A --> BUCKET4B["Bucket 4: Explore Riders<br/>CHECKOUT: 30M + Spouse coverage"]
+    L3B --> BUCKET4C["Bucket 4: Explore Riders<br/>CHECKOUT: 30M + Family planning"]
+    L3C --> BUCKET4D["Bucket 4: Explore Riders<br/>CHECKOUT: 30M + Elder care"]
+
+    EDU1B --> BUCKET5D["Bucket 5: Learn More<br/>CHECKOUT: 30M + Mindset guide"]
+    EDU2B --> BUCKET5E["Bucket 5: Learn More<br/>CHECKOUT: 30M + Savings vs Insurance"]
+    SELF3 --> BUCKET5C["Bucket 5: Learn More<br/>CHECKOUT: 30M + Protection basics"]
+    PAR3 --> BUCKET5B["Bucket 5: Learn More<br/>CHECKOUT: 30M + Calculation guide"]
+    FAM3 --> BUCKET5A["Bucket 5: Learn More<br/>CHECKOUT: 30M + Education"]
+
+%% ---------------------- REVIEW ------------
+    BUCKET3A --> REVIEW["Review<br/>Eligibility check<br/>Underwriting assessment<br/>Coverage confirmation"]
+    BUCKET3B --> REVIEW
+    BUCKET3C --> REVIEW
+    BUCKET4A --> 
+    BUCKET3D --> REVIEW
+    BUCKET3E --> REVIEW
+    
+    REVIEW --> CONSENT["Consent<br/>Terms & Conditions<br/>Policy details agreement"]
+    
+    CONSENT --> CHARGE{"Charge Money?"}
+    
+    CHARGE -->|No - Free 30M only| AUTH_FREE["OTP + Bio Authentication<br/>Identity verification"]
+    
+    CHARGE -->|Yes - Upgrade/Riders| PAYMENT["Move Money<br/>Payment processing<br/>Premium collection"]
+    
+    PAYMENT --> AUTH_PAID["OTP + Bio Authentication<br/>Identity verification"]
+    
+    AUTH_FREE --> POLICY_FREE["Policy Management<br/>30M Free Coverage Active"]
+    
+    AUTH_PAID --> POLICY_PAID["Policy Management<br/>30M Free + Premium Coverage Active"]
+    
+    style CHARGE fill:#ffeb3b
+    style PAYMENT fill:#ff9800
+    style AUTH_FREE fill:#2196f3
+    style AUTH_PAID fill:#2196f3
+    style POLICY_FREE fill:#4caf50
+    style POLICY_PAID fill:#4caf50
+
+%% ------------------------ BUCKET STYLES ------------------------
+
+    style BUCKET1 fill:#ffcdd2
+    style BUCKET2A fill:#e3f2fd
+    style BUCKET2B fill:#e3f2fd
+    style BUCKET2C fill:#e3f2fd
+    style BUCKET2D fill:#e3f2fd
+    style BUCKET3A fill:#c8e6c9
+    style BUCKET3B fill:#c8e6c9
+    style BUCKET3C fill:#c8e6c9
+    style BUCKET3D fill:#c8e6c9
+    style BUCKET3E fill:#c8e6c9
+    style BUCKET3F fill:#c8e6c9
+    style BUCKET3G fill:#c8e6c9
+    style BUCKET3H fill:#c8e6c9
+    style BUCKET3I fill:#c8e6c9
+    style BUCKET3J fill:#c8e6c9
+    style BUCKET3K fill:#c8e6c9
+    style BUCKET3L fill:#c8e6c9
+    style BUCKET4A fill:#fff3e0
+    style BUCKET4B fill:#fff3e0
+    style BUCKET4C fill:#fff3e0
+    style BUCKET4D fill:#fff3e0
+    style BUCKET4E fill:#fff3e0
+    style BUCKET5A fill:#f3e5f5
+    style BUCKET5B fill:#f3e5f5
+    style BUCKET5C fill:#f3e5f5
+    style BUCKET5D fill:#f3e5f5
+    style BUCKET5E fill:#f3e5f5
+    style BUCKET5F fill:#f3e5f5
+    style BUCKET5G fill:#f3e5f5
