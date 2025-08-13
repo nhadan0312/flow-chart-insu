@@ -33,9 +33,10 @@ START((Start)):::start --> A
 subgraph L0["The gift (Free Term-life)"]
 direction TB
 A[The Insurance is an annoying topic, but to make it less painful, we're offering you 30 million for three months<br>What's your true concern about this?]:::ceo
+
 %%A --> B["What is this?"]:::ceo
 %% A --> C["Why it free?"]:::ceo
-A --> B["What is free DTL?"]:::ceo
+A --> B["What is free digital term life?"]:::ceo
 A --> D["Why is there a free gift like this?"]:::ceo
     D --> WHYFREE[Why it free]
     WHYFREE --> H[Insurance planning often feels complicated, which is why many people avoid it entirely.<br><br>We're offering this free 30M coverage to help you experience the peace of mind that comes with proper protection with no strings attached, no hidden fees.<br><br>While this amount provides some breathing room, it likely won't match your actual protection needs 'typically 10-20x your annual income'.<br><br>This is our way of removing the initial barrier - letting you try before deciding if a more comprehensive solution fits your life.<br><br>Where are you in your protection journey?]:::ceo
@@ -80,7 +81,7 @@ D_INFO --> B
 subgraph L2["How to Use + Product Information"]
 direction TB
     CHOICE --> TAKEFREE["Want to learn more about insurance in general?(Always give customers the option to go back)"]:::ceo
-    CHOICE --> ASKMORE["Add to cart"]:::ceo
+    CHOICE --> |Just take free| ASKMORE["Add to cart"]:::ceo
     CHOICE --> SKIP["Not interested"]:::ceo
         SKIP --> END_flOW[END_FLOW]:::dec
  
