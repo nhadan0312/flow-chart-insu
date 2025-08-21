@@ -1,0 +1,680 @@
+flowchart LR
+ 
+%% ===== Styles =====
+classDef start fill:#dc2626,stroke:#991b1b,color:#fff,stroke-width:1.5
+classDef lane0 fill:#fff7ed,stroke:#fdba74,stroke-width:0.6,color:#1f2937
+classDef lane1 fill:#e0f2fe,stroke:#93c5fd,stroke-width:0.6,color:#0f172a
+classDef lane2 fill:#ecfeff,stroke:#67e8f9,stroke-width:0.6,color:#0e1726
+classDef lane3 fill:#f0fdf4,stroke:#86efac,stroke-width:0.6,color:#052e16
+classDef lane4 fill:#ede9fe,stroke:#c4b5fd,stroke-width:0.6,color:#1e1b4b
+classDef lane5 fill:#fff1f2,stroke:#fda4af,stroke-width:0.6,color:#4c0519
+classDef ceo   fill:#ffffff,stroke:#6b7b93,stroke-width:1.2,color:#0f172a
+classDef dec   fill:#fff7ed,stroke:#fb923c,stroke-width:1.2,color:#7a3417
+classDef money fill:#fffbeb,stroke:#facc15,stroke-width:1.2,color:#713f12
+classDef verify fill:#ecfccb,stroke:#a3e635,stroke-width:1.2,color:#1a2e05
+classDef policy fill:#f1f5f9,stroke:#94a3b8,stroke-width:1.2,color:#0f172a
+classDef hub   fill:#ffffff,stroke:#cbd5e1,stroke-dasharray:4 3,color:#334155
+ 
+%% ===== Anchors (mỗi lane một cột) =====
+ 
+%% ===== Start =====
+START((Start)):::start --> A
+ 
+%% ===== L0 =====
+subgraph L0["The gift (Free Term-life)"]
+direction TB
+A[The Insurance is an annoying topic, but to make it less painful, we're offering you 30 million for three months<br>What's your true concern about this?]:::ceo
+%%A --> B["What is this?"]:::ceo
+%% A --> C["Why it free?"]:::ceo
+A --> B["What is free digital term life?"]:::ceo
+A --> D["Why is there a free gift like this?"]:::ceo
+    D --> WHYFREE[Why it free]
+    WHYFREE --> H[Insurance planning often feels complicated, which is why many people avoid it entirely.<br><br>We're offering this free 30M coverage to help you experience the peace of mind that comes with proper protection with no strings attached, no hidden fees.<br><br>While this amount provides some breathing room, it likely won't match your actual protection needs 'typically 10-20x your annual income'.<br><br>This is our way of removing the initial barrier - letting you try before deciding if a more comprehensive solution fits your life.<br><br>Where are you in your protection journey?]:::ceo
+    H --> B
+    D --> After1_edu["After 3 free months, do I need to pay?"]:::ceo
+    After1_edu --> D_INFO[1/ No, if you don't need continued protection, you can simply let it expire<br><br> 2/ Yes, if you want to strengthen your protection, you can learn more about Timo's insurance offer, you can learn more about Timo's insurance offer here]:::ceo
+%% Mini flow to explain DTL 30M Free (compact)
+    B --> Q1["What exactly is the free 30M coverage?"]:::ceo
+    Q1 --> A1["It’s a 30M VND Digital Term Life coverage for 3 months, paying out in case of death or total and permanent disability — a free trial of the base plan. Not an investment; no cash/surrender value."]:::ceo
+ 
+    B --> Q2["How do I get it?"]:::ceo
+    Q2 --> A2["Tap “Take it free” → confirm your info → OTP/Bio → coverage activates instantly in-app."]:::ceo
+ 
+    B --> Q3["Any catch or conditions?"]:::ceo
+    Q3 --> A3["No payment, no card, no hidden fees, and no auto-charge. It expires after 3 months unless you choose to upgrade."]:::ceo
+ 
+ 
+    A1 --> CHOICE
+    A2 --> CHOICE
+    A3 --> CHOICE["Now that you know what the free 30M DTL is, what would you like to do next?"]:::ceo
+ 
+ 
+end
+class L0 lane0
+%%L0A --> A
+ 
+%% ===== L1 =====
+%% subgraph L1["Quick Answers"]
+%%direction TB
+    %%D --> WHYFREE[Why it free]
+    %%WHYFREE --> H[Insurance planning often feels complicated, which is why many people avoid it entirely.<br><br>We're offering this free 30M coverage to help you experience the peace of mind that comes with proper protection with no strings attached, no hidden fees.<br><br>While this amount provides some breathing room, it likely won't match your actual protection needs 'typically 10-20x your annual income'.<br><br>This is our way of removing the initial barrier - letting you try before deciding if a more comprehensive solution fits your life.<br><br>Where are you in your protection journey?]:::ceo
+    %%H --> B
+    %%D --> After1_edu["After 3 free months, do I need to pay?"]:::ceo
+    %%After1_edu --> D_INFO[1/ No, if you don't need continued protection, you can simply let it expire<br><br> 2/ Yes, if you want to strengthen your protection, you can learn more about Timo's insurance offer, you can learn more about Timo's insurance offer here]:::ceo
+    %%end
+%%class L1 lane1
+ 
+%% L1 -> L2
+D_INFO --> B
+ 
+%% ===== L2 =====
+subgraph L2["How to Use + Product Information"]
+direction TB
+    CHOICE --> TAKEFREE["Want to learn more about insurance in general?(Always give customers the option to go back)"]:::ceo
+    CHOICE --> ASKMORE["Add to cart"]:::ceo
+    CHOICE --> SKIP["Not interested"]:::ceo
+        SKIP --> END_flOW[END_FLOW]:::dec
+ 
+        TAKEFREE --> LEARN_Fee[Learn about Premiums]
+        TAKEFREE --> LEARN_Claim[Learn about Claim]
+        TAKEFREE --> LEARN_Bene[Learn about Beneficiary]
+        TAKEFREE --> LEARN_Pol[Learn about Policy Terms]
+        TAKEFREE --> LEARN_COV[Learn about Coverage & Benefits]
+ 
+        %%TAKEFREE --> LM1["Who can get the free plan?"]:::ceo
+        %%LM1 --> LM1A["It's available for Timo customers who meet basic health requirements. No medical exams needed."]:::ceo
+    %%Claims
+        LEARN_Claim --> LM2["How is the payout made?"]:::ceo
+        LM2 --> LM2A["If a covered event happens, the lump sum is paid to your beneficiary within ~48–72 hours after claim approval."]:::ceo
+        LM2A --> DONE_CHECK
+ 
+        LEARN_Claim --> LEARN_CLAIMS["How beneficiaries get paid"]:::ceo
+        LEARN_CLAIMS --> CLAIMS_EDU[The beneficiary can submit an insurance claim at any Chubb Life office nationwide or refer to the claim process at: https://muaonline.baohiemchubblife.vn/giai-quyet-quyen-loi-BH]:::ceo
+        CLAIMS_EDU --> DONE_CHECK
+ 
+    %%Fee
+        LEARN_Fee --> LEARN_banggia[How is the premium calculated if I upgrade my coverage?]:::ceo
+        LEARN_banggia --> fee_EDU["Premiums are calculated based on the Life Assured’s age and the Face Amount selected by the Policy Owner for DTL.<br><br>If you add Riders, each one has its own premium based on its specific benefits.<br><br>Thinking about upgrading your protection? Here’s what the premium rates look like:<br><br>*Show fee*"]:::ceo
+        fee_EDU --> DONE_CHECK
+ 
+        LEARN_Fee --> PREM_Q3["What happens if I miss a payment?"]:::ceo
+        PREM_Q3 --> PREM_A3["Your coverage may lapse if payment is not made within the grace period. The free DTL plan has no payments, so this applies only if you upgrade or add Riders."]:::ceo
+        PREM_A3  --> DONE_CHECK
+        %%LEARN_Fee --> PREM_Q2["Can I change how often I pay?"]:::ceo
+        %%PREM_Q2 --> PREM_A2["Yes. You can choose monthly or annual payments when purchasing, and adjust later if needed."]:::ceo
+ 
+ 
+    %%Bene
+        LEARN_Bene --> BEN_Q2["Can I change my beneficiary later?"]:::ceo
+        BEN_Q2 --> BEN_A2["Yes. You can update your beneficiary information anytime in the Timo app"]:::ceo
+        BEN_A2 --> DONE_CHECK
+ 
+            DONE_CHECK["Have you got all the info you need?"]:::ceo
+            %%%%DONE_CHECK --> NODONE["No, I still have questions"]:::ceo
+                %%NODONE["No, I still have questions"]:::ceo --> TAKEFREE
+            DONE_CHECK --> YESDONE["Yes, I’m clear"]:::ceo --> ASKMORE
+               
+        ASKMORE--> UPSELL["Great! You’ve just added the free 30M coverage to protect your family.<br><br>This amount is just a starting point — would you like to learn more about upgrading the coverage, adding extra protection, or keeping it as is?"]:::ceo
+ 
+    %%Pol
+        LEARN_Pol --> TERMS_Q1["How long does coverage last?"]:::ceo
+        TERMS_Q1 --> TERMS_A1["The free DTL lasts 3 months. Upgraded DTL or Riders come with a 12-month contract, which can be renewed annually as long as you keep paying the premiums."]:::ceo
+        TERMS_A1--> DONE_CHECK
+ 
+    %%Cov
+        LEARN_COV --> COV_Q3["Are there optional benefits I can add?"]:::ceo
+        COV_Q3 --> COV_A3["Yes. You can add Riders to your DTL plan for extra protection, each with its own benefits and premiums."]:::ceo
+        COV_A3 --> DONE_CHECK
+        LEARN_COV --> COV_Q1["What does this policy cover?"]:::ceo
+        COV_Q1 --> COV_A1["DTL covers death or total & permanent disability. Riders cover specific risks like Cancer, Critical Illness, or Hospitalization."]:::ceo
+        COV_A1 --> DONE_CHECK
+        LEARN_COV --> COV_Q2["How much will it pay out?"]:::ceo
+        COV_Q2 --> COV_A2["DTL pays the sum assured you select. Riders pay the benefit amount stated in their terms for the covered event."]:::ceo
+        COV_A2 --> DONE_CHECK
+ 
+ 
+ 
+    %% LEARN_PROCESS --> LEARN_CLAIMS["How beneficiaries get paid"]:::ceo
+    %% LEARN_CLAIMS --> CLAIMS_EDU["Submit death certificate → payout ~48–72h (if approved).<br/>Change your view of 30M offer?"]:::ceo
+ 
+ 
+ 
+UPSELL --> LEARN_SUB["Learn more about supplementary insurance (Riders / extra coverage)"]:::ceo
+    LEARN_SUB --> Rider_edu["An extra coverage or rider — is an optional add-on to your base policy that upgrades or customizes your benefits. It has its own premium and ends if the base policy ends. <br><br>At Timo, you can currently add three riders: Cancer, Critical Illness, and Hospitalization. <br><br>Want to learn more?"]:::ceo
+    Rider_edu --> Can_edu["Cancer<BR><BR>View TnC"]:::ceo
+    Rider_edu --> CI_edu["Critical Illness<BR><BR>View TnC"]:::ceo
+    Rider_edu --> Hos_edu["Hospitalization<BR><BR>View TnC"]:::ceo
+    %%Can_edu --> Consent_hint["If you opt in to the *xyz* rider, you will automatically activate the DTL base plan with a 3-month free trial (riders need a base)."]:::ceo
+    %%CI_edu --> Consent_hint
+    %%Hos_edu --> Consent_hint
+   
+UPSELL --> LEARN_PROCESS["Just want to take it free"]:::ceo
+ 
+UPSELL --> LEARN_MAIN["Learn more about life insurance (Digital Term Life) / upgrading coverage amount"]:::ceo
+    %%LEARN_MAIN --> LEARN_PRODUCT[Learn about product]
+    %%LEARN_MAIN --> LEARN_Claim[Learn about claim]
+    %%LEARN_MAIN --> LEARN_Fee[Learn about fee]
+    %%LEARN_MAIN --> LEARN_OTHER[Other]
+ 
+    LEARN_MAIN --> LEARN_what[What is Digital Term Life insurance]:::ceo
+    LEARN_what --> what_EDU[This is an insurance product where you pay a very small premium to start coverage; if death occurs during the policy term, a lump sum will be paid to the beneficiary for protection]:::ceo
+ 
+ 
+    LEARN_MAIN --> LEARN_ELIGIBLE[Who might this product not be suitable for]:::ceo
+    LEARN_ELIGIBLE --> E_EDU[This product is not available for individuals who are outside the eligible age range or who do not meet the health requirements]:::ceo
+ 
+    LEARN_MAIN --> LEARN_moneyback[If no risk/claim happens during the term, do I get my money back?]:::ceo
+    LEARN_moneyback --> MP_EDU[You “rent” income protection for a set number of years. If a covered event happens during the term → payout. If you outlive the term → no refund]:::ceo
+ 
+    LEARN_MAIN --> LEARN_buyelse[Can I get this coverage for someone else I care about?]
+    LEARN_buyelse --> buyelse_EDU[For Digital Term Life Insurance, the policyholder and the insured person must be the same. You can’t take out this plan on someone else’s behalf — but you can help them apply so they’re protected under their own name]
+ 
+end
+class L2 lane2
+ 
+ 
+%% ===== L3 =====
+%%subgraph L3["Value education (Why free?) • Drop: —"]
+ 
+direction TB
+%% C --> H[Insurance planning often feels complicated, which is why many people avoid it entirely.<br><br>We're offering this free 30M coverage to help you experience the peace of mind that comes with proper protection with no strings attached, no hidden fees.<br><br>While this amount provides some breathing room, it likely won't match your actual protection needs 'typically 10-20x your annual income'.<br><br>This is our way of removing the initial barrier - letting you try before deciding if a more comprehensive solution fits your life.<br><br>Where are you in your protection journey?]:::ceo
+%% H --> H1["Never thought about it"]:::ceo
+%% H --> H2["I have some savings"]:::ceo
+%% H --> H3["I want to know what I need"]:::ceo
+%% H --> H4["Not interested"]:::ceo
+ 
+%% H1 --> EDU1["Peace of mind = family free from financial anxiety.<br/>Do you want that confidence?"]:::ceo
+%% H2 --> EDU2["Savings = temporary setbacks; death = permanent income loss.<br/>Enough to replace 10–20 years?"]:::ceo
+%% H3 --> EDU3["Smart. Let’s size coverage (~10–20× income)."]:::ceo
+%% H4 --> END_FLOW["END_FLOW"]:::ceo
+%% EDU1 --> EDU1A["Yes"]:::ceo
+%% EDU1 --> EDU1B["How to think?"]:::ceo
+%% EDU2 --> EDU2A["You're right, I don't have that"]:::ceo
+%% EDU3 --> EDU3A["Let's calculate together"]:::ceo
+%% end
+%%class L3 lane3
+ 
+%% L2/L3 -> L4
+Can_edu --> THINK
+CI_edu --> THINK
+Hos_edu --> THINK
+MP_EDU --> THINK
+%%% APPLY_EDU --> THINK
+E_EDU --> THINK
+%%EDU1A --> THINK
+%%EDU2A --> THINK
+%%EDU3A --> THINK
+buyelse_EDU --> THINK
+what_EDU --> THINK
+ 
+%% L3 -> L2 (hỏi thêm sp)
+%% EDU1B --> B
+ 
+%% ===== L4 =====
+subgraph L4["Cart Review / Option Selection "]
+direction TB
+THINK["Alright, you know how DTL/Riders works — ready to take it up a notch?"]:::ceo
+ 
+THINK --> D1["I’m ready"]:::ceo
+THINK --> D3["Don't care. Just want to take DTL free"]:::ceo
+%%--> END[END_FLOW]:::dec
+%% --- Nhánh Upgrade ---
+D1 --> U_CHOICE["Great — Let’s take a quick quiz to find out what protection suits you best"]:::ceo
+U_CHOICE --> Q_PROTECT["Quiz: <br><br> 1.What do you want to protect? DEATH (parent allowance, kids future, daily expense, assets) /  HEALTH (hospital expense, cancer, critical illness) / BOTH / NOT SURE )<br><br> 2.How long you can cover with current saving? (<3m, 3-6m, 6-12m, 12-24m, >24m, )"]:::ceo
+%%Q_PROTECT --> P1["1.DEATH (parent allowance, kids future, daily expense, assets)"]:::ceo
+%%Q_PROTECT --> P2["2.HEALTH (hospital expense, cancer, critical illness)"]:::ceo
+%%Q_PROTECT --> P3["3.BOTH"]:::ceo
+%%Q_PROTECT --> P4["4.NOT SURE"]:::ceo
+ 
+ 
+%%Q_PROTECT --> Q_BUFFER
+ 
+%%Q_BUFFER["How long you can cover with current saving? (<3m, 3-6m, 6-12m, 12-24m, >24m, )"]:::ceo
+%% Q_BUFFER --> B1["A.Below 3m"]:::ceo
+%%Q_BUFFER --> B2["B.3-6m"]:::ceo
+%%Q_BUFFER --> B3["C.6-12m"]:::ceo
+%%Q_BUFFER --> B4["D.12-24m"]:::ceo
+%%Q_BUFFER --> B5["E.Above 24m"]:::ceo
+Q_PROTECT --> Dontcare[Don't care. Just want to take DTL free]
+Q_PROTECT --> Custom[I want to personalise my plan]
+    Custom --> SLIDER[Go to the DTL slider selection screen]
+Q_PROTECT --> SELECTION[Timo’s recommendation for you]
+ 
+ 
+SELECTION --> BRIDGE[Select NOT SURE -> Free DTL]
+SELECTION --> BRIDGE1[Select HEALTH &3-6m -> Free DTL + riders]
+SELECTION --> BRIDGE2[Select DEATH / HEALTH / BOTH & <3m cover -> Free DTL + riders]
+SELECTION --> BRIDGE3[Select DEATH &3-6m, 6-12m -> Upgrade DTL]
+SELECTION --> BRIDGE4[Select DEATH &12-24m & >24m -> Upgrade DTL + riders]
+SELECTION --> BRIDGE5[Select HEALTH &6-12m, 12-24m & >24m -> Upgrade DTL + riders]
+SELECTION --> BRIDGE6[Select BOTH3-6m, 6-12m, 12-24m & >24m -> Upgrade DTL + riders]
+ 
+%%BRIDGE["SELECTION:
+%%1.Select 4 -> Free DTL
+%%2.Select 2B -> Free DTL + Riders
+%%3.Select 1A, 2A, 3A -> Free DTL + Riders
+%%4.Select 1B, 1C -> Upgrade DTL
+%%5.Select 1D, 1E -> Upgrade DTL + Riders
+%%6.Select 2C, 2D, 2E -> Upgrade DTL + Riders
+%%7.Select 3B, 3C, 3D, 3E -> Upgrade DTL + Riders"]:::ceo
+ 
+ 
+end
+class L4 lane4
+ 
+%% L4 -> L5
+ 
+%%TAKEFREE--> REVIEW:::ceo
+%%BUCKET_DTL_RIDER --> REVIEW
+%%BUCKET_UP --> REVIEW
+%%Consent_hint --> REVIEW
+%%BUCKET_FREE --> REVIEW
+D3 --> ADD_CART
+LEARN_PROCESS --> ADD_CART
+BRIDGE --> ADD_CART
+BRIDGE1 --> ADD_CART
+BRIDGE2 --> ADD_CART
+BRIDGE3 --> ADD_CART
+BRIDGE4 --> ADD_CART
+BRIDGE5 --> ADD_CART
+BRIDGE6 --> ADD_CART
+Dontcare --> ADD_CART
+SLIDER --> ADD_CART
+%% ===== L5 =====
+subgraph L5["Review, consent & activation"]
+direction TB
+ 
+%% ADD TO CART STEP
+ADD_CART["Add to cart"]:::ceo --> REVIEW
+REVIEW["Tap to review your card"]:::ceo
+CONSENT[I consent to the sharing of my information<br><br>I have read, understood, and agree to the product Terms & Conditions]:::ceo
+CHARGE{Do you want to proceed with the premium payment?}:::dec
+AUTH_FREE["OTP + Bio Auth • ID verify"]:::verify
+PAYMENT["Choose the funding source for monthly premiums."]:::money
+SCHEDULE["Select payment schedule: monthly, quarterly, or annually"]:::money
+AUTH_PAID["OTP + Bio Auth • ID verify"]:::verify
+POLICY_FREE["Policy Mgmt<br/>30M Free Coverage Active"]:::policy
+POLICY_PAID["Policy Mgmt<br/>30M Free + Premium Coverage Active"]:::policy
+ 
+REVIEW --> CONSENT
+CONSENT --> CHARGE
+CHARGE -->|No, I only want to activate the free DTL coverage| AUTH_FREE
+CHARGE -->|Yes, I want to increase the coverage amount / purchase additional riders.| PAYMENT --> SCHEDULE --> AUTH_PAID
+AUTH_FREE --> POLICY_FREE
+AUTH_PAID --> POLICY_PAID
+end
+class L5 lane5
+ 
+%% AFTER SELL
+%% AFTER SELL
+subgraph AFTER_SELL["Repayment"]
+direction TB
+    MONTHLY_PAY["Monthly Payment Reminder<br/><br/>Auto notification before due date"]:::money
+    GRACE["Grace period: up to 60 days unpaid"]:::policy
+    REINSTATE["Policy continues as normal"]:::policy
+    LAPSE["Policy canceled (lapsed)"]:::policy
+
+    RENEWAL_PLAN["Annual Renewal Reminder<br/><br/>At month 12: review & renew plan"]:::verify
+    EXPIRE_12["Policy expires"]:::policy
+
+    BUY_AGAIN{Buy again?}:::dec
+    RESTART_FLOW["Start a different plan from the previous one (new underwriting/verification)"]:::policy
+    CONTINUE_PLAN["Renew the previous plan <br>(if eligible)"]:::policy
+end
+
+
+POLICY_FREE --> AFTER_SELL
+POLICY_PAID --> AFTER_SELL
+
+AFTER_SELL --> MONTHLY_PAY --> GRACE
+GRACE -->|Paid within 60 days| REINSTATE --> RENEWAL_PLAN
+GRACE -->|Unpaid > 60 days| LAPSE --> BUY_AGAIN
+BUY_AGAIN -->|Start new plan| RESTART_FLOW
+BUY_AGAIN -->|Renew previous| CONTINUE_PLAN
+
+
+RENEWAL_PLAN -->|Renew| BUY_AGAIN
+RENEWAL_PLAN -->|Don't renew| EXPIRE_12 --> End:::dec %%{init:{
+
+flowchart LR
+ 
+%% ===== Styles =====
+classDef start fill:#dc2626,stroke:#991b1b,color:#fff,stroke-width:1.5
+classDef lane0 fill:#fff7ed,stroke:#fdba74,stroke-width:0.6,color:#1f2937
+classDef lane1 fill:#e0f2fe,stroke:#93c5fd,stroke-width:0.6,color:#0f172a
+classDef lane2 fill:#ecfeff,stroke:#67e8f9,stroke-width:0.6,color:#0e1726
+classDef lane3 fill:#f0fdf4,stroke:#86efac,stroke-width:0.6,color:#052e16
+classDef lane4 fill:#ede9fe,stroke:#c4b5fd,stroke-width:0.6,color:#1e1b4b
+classDef lane5 fill:#fff1f2,stroke:#fda4af,stroke-width:0.6,color:#4c0519
+classDef ceo   fill:#ffffff,stroke:#6b7b93,stroke-width:1.2,color:#0f172a
+classDef dec   fill:#fff7ed,stroke:#fb923c,stroke-width:1.2,color:#7a3417
+classDef money fill:#fffbeb,stroke:#facc15,stroke-width:1.2,color:#713f12
+classDef verify fill:#ecfccb,stroke:#a3e635,stroke-width:1.2,color:#1a2e05
+classDef policy fill:#f1f5f9,stroke:#94a3b8,stroke-width:1.2,color:#0f172a
+classDef hub   fill:#ffffff,stroke:#cbd5e1,stroke-dasharray:4 3,color:#334155
+ 
+%% ===== Anchors (mỗi lane một cột) =====
+ 
+%% ===== Start =====
+START((Start)):::start --> A
+ 
+%% ===== L0 =====
+subgraph L0["The gift (Free Term-life)"]
+direction TB
+A[**78 users**<br> <br>The Insurance is an annoying topic, but to make it less painful, we're offering you 30 million for three months<br>What's your true concern about this?]:::ceo
+
+%%A --> B["What is this?"]:::ceo
+%% A --> C["Why it free?"]:::ceo
+A --> B["**51 users** <br><br>What is free term life?"]:::ceo
+A --> D["Why is there a free gift like this?"]:::ceo
+    D --> WHYFREE[Why it free]
+    WHYFREE --> H[Insurance planning often feels complicated, which is why many people avoid it entirely.<br><br>We're offering this free 30M coverage to help you experience the peace of mind that comes with proper protection with no strings attached, no hidden fees.<br><br>While this amount provides some breathing room, it likely won't match your actual protection needs 'typically 10-20x your annual income'.<br><br>This is our way of removing the initial barrier - letting you try before deciding if a more comprehensive solution fits your life.<br><br>Where are you in your protection journey?]:::ceo
+    H --> B
+    D --> After1_edu["**33 user**<br><br>After 3 free months, do I need to pay?"]:::ceo
+    After1_edu --> D_INFO[1/ No, if you don't need continued protection, you can simply let it expire<br><br> 2/ Yes, if you want to strengthen your protection, you can learn more about Timo's insurance offer, you can learn more about Timo's insurance offer here]:::ceo
+%% Mini flow to explain DTL 30M Free (compact)
+    B --> Q1["What exactly is the free 30M coverage?"]:::ceo
+    Q1 --> A1["It’s a 30M VND Term Life coverage for 3 months, paying out in case of death or total and permanent disability — a free trial of the base plan. Not an investment; no cash/surrender value."]:::ceo
+ 
+    B --> Q2["How do I get it?"]:::ceo
+    Q2 --> A2["Tap “Take it free” → confirm your info → OTP/Bio → coverage activates instantly in-app."]:::ceo
+ 
+    B --> Q3["Any catch or conditions?"]:::ceo
+    Q3 --> A3["No payment, no card, no hidden fees, and no auto-charge. It expires after 3 months unless you choose to upgrade."]:::ceo
+ 
+ 
+    A1 --> CHOICE
+    A2 --> CHOICE
+    A3 --> CHOICE["Now that you know what the free 30M Term Life is, what would you like to do next?"]:::ceo
+ 
+ 
+end
+class L0 lane0
+%%L0A --> A
+ 
+%% ===== L1 =====
+%% subgraph L1["Quick Answers"]
+%%direction TB
+    %%D --> WHYFREE[Why it free]
+    %%WHYFREE --> H[Insurance planning often feels complicated, which is why many people avoid it entirely.<br><br>We're offering this free 30M coverage to help you experience the peace of mind that comes with proper protection with no strings attached, no hidden fees.<br><br>While this amount provides some breathing room, it likely won't match your actual protection needs 'typically 10-20x your annual income'.<br><br>This is our way of removing the initial barrier - letting you try before deciding if a more comprehensive solution fits your life.<br><br>Where are you in your protection journey?]:::ceo
+    %%H --> B
+    %%D --> After1_edu["After 3 free months, do I need to pay?"]:::ceo
+    %%After1_edu --> D_INFO[1/ No, if you don't need continued protection, you can simply let it expire<br><br> 2/ Yes, if you want to strengthen your protection, you can learn more about Timo's insurance offer, you can learn more about Timo's insurance offer here]:::ceo
+    %%end
+%%class L1 lane1
+ 
+%% L1 -> L2
+D_INFO --> B
+ 
+%% ===== L2 =====
+subgraph L2["How to Use + Product Information"]
+direction TB
+    CHOICE --> TAKEFREE["Want to learn more about insurance in general?(Always give customers the option to go back)"]:::ceo
+    CHOICE --> |Just take free| ASKMORE["Add to cart"]:::ceo
+    CHOICE --> SKIP["**6 users**<br><br>Not interested"]:::ceo
+        SKIP --> END_flOW[END_FLOW]:::dec
+ 
+        TAKEFREE --> LEARN_Fee[Learn about Premiums]
+        TAKEFREE --> LEARN_Claim[Learn about Claim]
+        TAKEFREE --> LEARN_Bene[Learn about Beneficiary]
+        TAKEFREE --> LEARN_Pol[Learn about Policy/TnC/Eligible]
+        TAKEFREE --> LEARN_COV[Learn about Coverage & Benefits]
+ 
+        %%TAKEFREE --> LM1["Who can get the free plan?"]:::ceo
+        %%LM1 --> LM1A["It's available for Timo customers who meet basic health requirements. No medical exams needed."]:::ceo
+    %%Claims
+        LEARN_Claim --> LM2["**6 users**<br><br>How is the payout made?"]:::ceo
+        LM2 --> LM2A["If a covered event happens, the lump sum is paid to your beneficiary within ~48–72 hours after claim approval."]:::ceo
+        LM2A --> DONE_CHECK
+ 
+        LEARN_Claim --> LEARN_CLAIMS["How beneficiaries get paid"]:::ceo
+        LEARN_CLAIMS --> CLAIMS_EDU[The beneficiary can submit an insurance claim at any Chubb Life office nationwide or refer to the claim process at: https://muaonline.baohiemchubblife.vn/giai-quyet-quyen-loi-BH]:::ceo
+        CLAIMS_EDU --> DONE_CHECK
+ 
+    %%Fee
+        LEARN_Fee --> LEARN_banggia[**27 users**<br><br>How is the premium calculated if I upgrade my coverage?]:::ceo
+        LEARN_banggia --> fee_EDU["Premiums are calculated based on the Life Assured’s age and the Face Amount selected by the Policy Owner for Term Life.<br><br>If you add Riders, each one has its own premium based on its specific benefits.<br><br>Thinking about upgrading your protection? Here’s what the premium rates look like:<br><br>*Show fee*"]:::ceo
+        fee_EDU --> DONE_CHECK
+ 
+        LEARN_Fee --> PREM_Q3["**12 users**<br><br>Payment Schedule / What happens if I miss a payment?"]:::ceo
+        PREM_Q3 --> PREM_A3["Your payment schedule depends on your choice: monthly, quarterly, or annually. <br><br>If payment is not made within the grace period, your coverage may lapse. However, Timo sets up an automatic payment schedule at the time of purchase, so your premiums are automatically deducted when due—helping you stay protected without worrying about missed payments.<br><br>The free Term Life plan has no payments, so this applies only if you upgrade or add Riders"]:::ceo
+        PREM_A3  --> DONE_CHECK
+        %%LEARN_Fee --> PREM_Q2["Can I change how often I pay?"]:::ceo
+        %%PREM_Q2 --> PREM_A2["Yes. You can choose monthly or annual payments when purchasing, and adjust later if needed."]:::ceo
+ 
+ 
+    %%Bene
+        LEARN_Bene --> BEN_Q2["Can I change my beneficiary later?"]:::ceo
+        BEN_Q2 --> BEN_A2["Yes. You can update your beneficiary information anytime in the Timo app"]:::ceo
+        BEN_A2 --> DONE_CHECK
+ 
+            DONE_CHECK["Have you got all the info you need?"]:::ceo
+            %%%%DONE_CHECK --> NODONE["No, I still have questions"]:::ceo
+                %%NODONE["No, I still have questions"]:::ceo --> TAKEFREE
+            DONE_CHECK --> YESDONE["Yes, I’m clear"]:::ceo --> ASKMORE
+               
+        ASKMORE--> UPSELL["Great! You’ve just added the free 30M coverage to protect your family.<br><br>This amount is just a starting point — would you like to learn more about upgrading the coverage, adding extra protection, or keeping it as is?"]:::ceo
+ 
+    %%Pol
+        LEARN_Pol --> TERMS_Q1["**6 users**<br><br>How long does coverage last?"]:::ceo
+        TERMS_Q1 --> TERMS_A1["The free Term Life lasts 3 months. Upgraded Term Life or Riders come with a 12-month contract, which can be renewed annually as long as you keep paying the premiums."]:::ceo
+        TERMS_A1--> DONE_CHECK
+ 
+        LEARN_Pol --> TERMS_Q2["**15 users**<br><br>What illnesses or conditions are excluded under this policy?"]:::ceo
+        TERMS_Q2 --> TERMS_A2["Both Term Life and Riders exclude pre-existing conditions, congenital diseases, self-inflicted injuries, alcohol/drug-related cases, high-risk activities, and war/terrorism incidents. <br><br>See TnC for full details"]:::ceo
+        TERMS_A2--> DONE_CHECK
+
+    %%Cov
+        LEARN_COV --> COV_Q3["Are there optional benefits I can add?"]:::ceo
+        COV_Q3 --> COV_A3["Yes. You can add Riders to your Term Life plan for extra protection, each with its own benefits and premiums."]:::ceo
+        COV_A3 --> DONE_CHECK
+        LEARN_COV --> COV_Q1["**3 users**<br><br>What does this policy cover?"]:::ceo
+        COV_Q1 --> COV_A1["Term Life covers death or total & permanent disability. Riders cover specific risks like Cancer, Critical Illness, or Hospitalization."]:::ceo
+        COV_A1 --> DONE_CHECK
+        LEARN_COV --> COV_Q2["How much will it pay out?"]:::ceo
+        COV_Q2 --> COV_A2["Term Life pays the sum assured you select. Riders pay the benefit amount stated in their terms for the covered event."]:::ceo
+        COV_A2 --> DONE_CHECK
+ 
+ 
+ 
+    %% LEARN_PROCESS --> LEARN_CLAIMS["How beneficiaries get paid"]:::ceo
+    %% LEARN_CLAIMS --> CLAIMS_EDU["Submit death certificate → payout ~48–72h (if approved).<br/>Change your view of 30M offer?"]:::ceo
+ 
+ 
+ 
+UPSELL --> LEARN_SUB["**54 users**<br><br>Learn more about supplementary insurance (Riders / extra coverage)"]:::ceo
+    LEARN_SUB --> Rider_edu["An extra coverage or rider — is an optional add-on to your base policy that upgrades or customizes your benefits. It has its own premium and ends if the base policy ends. <br><br>At Timo, you can currently add three riders: Cancer, Critical Illness, and Hospitalization. <br><br>Want to learn more?"]:::ceo
+    Rider_edu --> Can_edu["Cancer<BR><BR>View TnC"]:::ceo
+    Rider_edu --> CI_edu["Critical Illness<BR><BR>View TnC"]:::ceo
+    Rider_edu --> Hos_edu["Hospitalization<BR><BR>View TnC"]:::ceo
+    %%Can_edu --> Consent_hint["If you opt in to the *xyz* rider, you will automatically activate the DTL base plan with a 3-month free trial (riders need a base)."]:::ceo
+    %%CI_edu --> Consent_hint
+    %%Hos_edu --> Consent_hint
+   
+UPSELL --> LEARN_PROCESS["Just want to take it free"]:::ceo
+ 
+UPSELL --> LEARN_MAIN["Learn more about life insurance (Term Life) / upgrading coverage amount"]:::ceo
+    %%LEARN_MAIN --> LEARN_PRODUCT[Learn about product]
+    %%LEARN_MAIN --> LEARN_Claim[Learn about claim]
+    %%LEARN_MAIN --> LEARN_Fee[Learn about fee]
+    %%LEARN_MAIN --> LEARN_OTHER[Other]
+ 
+    LEARN_MAIN --> LEARN_what[What is Term Life insurance]:::ceo
+    LEARN_what --> what_EDU[This is an insurance product where you pay a very small premium to start coverage; if death occurs during the policy term, a lump sum will be paid to the beneficiary for protection]:::ceo
+ 
+ 
+    LEARN_MAIN --> LEARN_ELIGIBLE[**3 users**<br><br>Who might this product not be suitable for]:::ceo
+    LEARN_ELIGIBLE --> E_EDU[This product is not available for individuals who are outside the eligible age range or who do not meet the health requirements]:::ceo
+ 
+    LEARN_MAIN --> LEARN_moneyback[**3 users**<br><br>If no risk/claim happens during the term, do I get my money back?]:::ceo
+    LEARN_moneyback --> MP_EDU[You “rent” income protection for a set number of years. If a covered event happens during the term → payout. If you outlive the term → no refund]:::ceo
+ 
+    LEARN_MAIN --> LEARN_buyelse[**9 users**<br><br>Can I get this coverage for someone else I care about?]
+    LEARN_buyelse --> buyelse_EDU[For Term Life Insurance, the policyholder and the insured person must be the same. You can’t take out this plan on someone else’s behalf — but you can help them apply so they’re protected under their own name]
+ 
+end
+class L2 lane2
+ 
+ 
+%% ===== L3 =====
+%%subgraph L3["Value education (Why free?) • Drop: —"]
+ 
+direction TB
+%% C --> H[Insurance planning often feels complicated, which is why many people avoid it entirely.<br><br>We're offering this free 30M coverage to help you experience the peace of mind that comes with proper protection with no strings attached, no hidden fees.<br><br>While this amount provides some breathing room, it likely won't match your actual protection needs 'typically 10-20x your annual income'.<br><br>This is our way of removing the initial barrier - letting you try before deciding if a more comprehensive solution fits your life.<br><br>Where are you in your protection journey?]:::ceo
+%% H --> H1["Never thought about it"]:::ceo
+%% H --> H2["I have some savings"]:::ceo
+%% H --> H3["I want to know what I need"]:::ceo
+%% H --> H4["Not interested"]:::ceo
+ 
+%% H1 --> EDU1["Peace of mind = family free from financial anxiety.<br/>Do you want that confidence?"]:::ceo
+%% H2 --> EDU2["Savings = temporary setbacks; death = permanent income loss.<br/>Enough to replace 10–20 years?"]:::ceo
+%% H3 --> EDU3["Smart. Let’s size coverage (~10–20× income)."]:::ceo
+%% H4 --> END_FLOW["END_FLOW"]:::ceo
+%% EDU1 --> EDU1A["Yes"]:::ceo
+%% EDU1 --> EDU1B["How to think?"]:::ceo
+%% EDU2 --> EDU2A["You're right, I don't have that"]:::ceo
+%% EDU3 --> EDU3A["Let's calculate together"]:::ceo
+%% end
+%%class L3 lane3
+ 
+%% L2/L3 -> L4
+Can_edu --> THINK
+CI_edu --> THINK
+Hos_edu --> THINK
+MP_EDU --> THINK
+%%% APPLY_EDU --> THINK
+E_EDU --> THINK
+%%EDU1A --> THINK
+%%EDU2A --> THINK
+%%EDU3A --> THINK
+buyelse_EDU --> THINK
+what_EDU --> THINK
+ 
+%% L3 -> L2 (hỏi thêm sp)
+%% EDU1B --> B
+ 
+%% ===== L4 =====
+subgraph L4["Cart Review / Option Selection "]
+direction TB
+THINK["Alright, you know how Term Life/Riders works — ready to take it up a notch?"]:::ceo
+ 
+THINK --> D1["I’m ready"]:::ceo
+THINK --> D3["Don't care. Just want to take Term Life free"]:::ceo
+%%--> END[END_FLOW]:::dec
+%% --- Nhánh Upgrade ---
+D1 --> U_CHOICE["Great — Let’s take a quick quiz to find out what protection suits you best"]:::ceo
+U_CHOICE --> Q_PROTECT["Quiz: <br><br> 1.What do you want to protect? DEATH (parent allowance, kids future, daily expense, assets) /  HEALTH (hospital expense, cancer, critical illness) / BOTH / NOT SURE )<br><br> 2.How long you can cover with current saving? (<3m, 3-6m, 6-12m, 12-24m, >24m, )"]:::ceo
+%%Q_PROTECT --> P1["1.DEATH (parent allowance, kids future, daily expense, assets)"]:::ceo
+%%Q_PROTECT --> P2["2.HEALTH (hospital expense, cancer, critical illness)"]:::ceo
+%%Q_PROTECT --> P3["3.BOTH"]:::ceo
+%%Q_PROTECT --> P4["4.NOT SURE"]:::ceo
+ 
+ 
+%%Q_PROTECT --> Q_BUFFER
+ 
+%%Q_BUFFER["How long you can cover with current saving? (<3m, 3-6m, 6-12m, 12-24m, >24m, )"]:::ceo
+%% Q_BUFFER --> B1["A.Below 3m"]:::ceo
+%%Q_BUFFER --> B2["B.3-6m"]:::ceo
+%%Q_BUFFER --> B3["C.6-12m"]:::ceo
+%%Q_BUFFER --> B4["D.12-24m"]:::ceo
+%%Q_BUFFER --> B5["E.Above 24m"]:::ceo
+Q_PROTECT --> Dontcare[Don't care. Just want to take Term Life free]
+Q_PROTECT --> Custom[I want to personalise my plan]
+    Custom --> SLIDER[Go to the Term Life slider selection screen]
+Q_PROTECT --> SELECTION[Timo’s recommendation for you]
+ 
+ 
+SELECTION --> BRIDGE[Select NOT SURE -> Free Term Life]
+SELECTION --> BRIDGE1[Select HEALTH &3-6m -> Free Term Life + riders]
+SELECTION --> BRIDGE2[Select DEATH / HEALTH / BOTH & <3m cover -> Free Term Life + riders]
+SELECTION --> BRIDGE3[Select DEATH &3-6m, 6-12m -> Upgrade Term Life]
+SELECTION --> BRIDGE4[Select DEATH &12-24m & >24m -> Upgrade Term Life + riders]
+SELECTION --> BRIDGE5[Select HEALTH &6-12m, 12-24m & >24m -> Upgrade Term Life + riders]
+SELECTION --> BRIDGE6[Select BOTH3-6m, 6-12m, 12-24m & >24m -> Upgrade Term Life + riders]
+ 
+%%BRIDGE["SELECTION:
+%%1.Select 4 -> Free DTL
+%%2.Select 2B -> Free DTL + Riders
+%%3.Select 1A, 2A, 3A -> Free DTL + Riders
+%%4.Select 1B, 1C -> Upgrade DTL
+%%5.Select 1D, 1E -> Upgrade DTL + Riders
+%%6.Select 2C, 2D, 2E -> Upgrade DTL + Riders
+%%7.Select 3B, 3C, 3D, 3E -> Upgrade DTL + Riders"]:::ceo
+ 
+ 
+end
+class L4 lane4
+ 
+%% L4 -> L5
+ 
+%%TAKEFREE--> REVIEW:::ceo
+%%BUCKET_DTL_RIDER --> REVIEW
+%%BUCKET_UP --> REVIEW
+%%Consent_hint --> REVIEW
+%%BUCKET_FREE --> REVIEW
+D3 --> ADD_CART
+LEARN_PROCESS --> ADD_CART
+BRIDGE --> ADD_CART
+BRIDGE1 --> ADD_CART
+BRIDGE2 --> ADD_CART
+BRIDGE3 --> ADD_CART
+BRIDGE4 --> ADD_CART
+BRIDGE5 --> ADD_CART
+BRIDGE6 --> ADD_CART
+Dontcare --> ADD_CART
+SLIDER --> ADD_CART
+%% ===== L5 =====
+subgraph L5["Review, consent & activation"]
+direction TB
+ 
+%% ADD TO CART STEP
+ADD_CART["Add to cart"]:::ceo --> REVIEW
+REVIEW["Tap to review your card"]:::ceo
+CONSENT[I consent to the sharing of my information<br><br>I have read, understood, and agree to the product Terms & Conditions]:::ceo
+CHARGE{Do you want to proceed with the premium payment?}:::dec
+AUTH_FREE["OTP + Bio Auth • ID verify"]:::verify
+PAYMENT["Choose the funding source for monthly premiums."]:::money
+SCHEDULE["Select payment schedule: monthly, quarterly, or annually"]:::money
+AUTH_PAID["OTP + Bio Auth • ID verify"]:::verify
+POLICY_FREE["Policy Mgmt<br/>30M Free Coverage Active"]:::policy
+POLICY_PAID["Policy Mgmt<br/>30M Free + Premium Coverage Active"]:::policy
+ 
+REVIEW --> CONSENT
+CONSENT --> CHARGE
+CHARGE -->|No, I only want to activate the free Term Life coverage| AUTH_FREE
+CHARGE -->|Yes, I want to increase the coverage amount / purchase additional riders.| PAYMENT --> SCHEDULE --> AUTH_PAID
+AUTH_FREE --> POLICY_FREE
+AUTH_PAID --> POLICY_PAID
+end
+class L5 lane5
+ 
+%% AFTER SELL
+%% AFTER SELL
+subgraph AFTER_SELL["Repayment"]
+direction TB
+    MONTHLY_PAY["Monthly Payment Reminder<br/><br/>Auto notification before due date"]:::money
+    GRACE["Grace period: up to 60 days unpaid"]:::policy
+    REINSTATE["Policy continues as normal"]:::policy
+    LAPSE["Policy canceled (lapsed)"]:::policy
+
+    RENEWAL_PLAN["Annual Renewal Reminder<br/><br/>At month 12: review & renew plan"]:::verify
+    EXPIRE_12["Policy expires"]:::policy
+
+    BUY_AGAIN{Buy again?}:::dec
+    RESTART_FLOW["Start a different plan from the previous one (new underwriting/verification)"]:::policy
+    CONTINUE_PLAN["Renew the previous plan <br>(if eligible)"]:::policy
+end
+
+
+POLICY_FREE --> AFTER_SELL
+POLICY_PAID --> AFTER_SELL
+
+AFTER_SELL --> MONTHLY_PAY --> GRACE
+GRACE -->|Paid within 60 days| REINSTATE --> RENEWAL_PLAN
+GRACE -->|Unpaid > 60 days| LAPSE --> BUY_AGAIN
+BUY_AGAIN -->|Start new plan| RESTART_FLOW
+BUY_AGAIN -->|Renew previous| CONTINUE_PLAN
+
+
+RENEWAL_PLAN -->|Renew| BUY_AGAIN
+RENEWAL_PLAN -->|Don't renew| EXPIRE_12 --> End:::dec
